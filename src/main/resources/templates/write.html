@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>게시글 작성</h1>
+<form action="/board-write" method="post">
+    <div class="form-group">
+        <label for="writer">작성자</label>
+        <input type="text" class="form-control" placeholder="작성자를 입력하세요." name="writer" id="writer">
+        <br>
+        <label for="context">Title</label>
+        <textarea class="form-control" id="context" name="context" placeholder="내용을 입력하세요"></textarea>
+    </div>
+    <button class="w-40 btn btn-lg btn-primary" type="submit">작성하기</button>
+</form>
+</body>
+</html>

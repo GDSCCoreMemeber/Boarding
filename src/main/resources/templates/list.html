@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>GDSC 스터디 자료</h1>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>작성자</th>
+        <th>제목</th>
+        <th>등록일</th>
+        <th>수정일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="board : ${list}">
+        <td th:text="${board.writer}"></td>
+        <td>
+            <a th:text="${board.context}" th:href="@{/update-board(boardId=${board.id})}"></a>
+        </td>
+        <td th:text="${board.createDate}"></td>
+        <td th:text="${board.modifyDate}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
