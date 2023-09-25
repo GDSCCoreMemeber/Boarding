@@ -1,7 +1,6 @@
 package GDSC.GDSC;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
@@ -13,19 +12,18 @@ public class BoardController {
     private final BoardRepository boardRepository;
 
     @PostMapping("/board-write") //글 작성
-    public Long completeWrite(@RequestBody BoardRequsetDto requsetDto,ModelAndView mav){
-       return boardService.write(requsetDto);
+    public Long completeWrite(@RequestBody BoardRequestDto requestDto){
+       return boardService.write(requestDto);
     }
 
     @GetMapping("/board-list") //게시글 목록 출력
     public List<BoardResponseDto> getBoardList(ModelAndView mav){
       return boardService.getList();
-
     }
 
     @PatchMapping("/board-update/{id}") //게시글 수정
-    public void completeUpdate(@PathVariable Long id, @RequestBody BoardRequsetDto requsetDto){
-        boardService.update(id,requsetDto);
+    public Long completeUpdate(@PathVariable Long id, @RequestBody BoardRequestDto requestDto){
+       return boardService.update(id,requestDto);
     }
 
     @DeleteMapping("/delete-board/{boardId}") //게시글 삭제

@@ -8,6 +8,7 @@ import net.bytebuddy.implementation.bind.annotation.BindingPriority;
 import java.sql.Timestamp;
 
 @Getter
+@NoArgsConstructor
 public class BoardResponseDto {
     private Long id;
     private String writer;

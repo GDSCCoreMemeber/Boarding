@@ -1,19 +1,14 @@
 package GDSC.GDSC;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import lombok.*;
 
 import javax.persistence.*;
-import java.lang.annotation.Target;
 
 @Entity
 @Table(name = "board")
-@Data
+@Getter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board extends BaseTimeEntity{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,8 +24,9 @@ public class Board extends BaseTimeEntity{
         this.writer = writer;
     }
 
-    public void update(BoardRequsetDto requsetDto) {
-        this.writer= requsetDto.getWriter();
-        this.context=requsetDto.getContext();
+    public void update(BoardRequestDto requestDto) {
+        this.writer= requestDto.getWriter();
+        this.context=requestDto.getContext();
     }
+
 }

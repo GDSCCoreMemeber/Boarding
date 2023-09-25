@@ -12,20 +12,21 @@ import java.util.stream.Collectors;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    public Long write(BoardRequsetDto requsetDto) {
-      return boardRepository.save(requsetDto.toEntity()).getId();
+    public Long write(BoardRequestDto requestDto) {
+      return boardRepository.save(requestDto.toEntity()).getId();
     }
 
     @Transactional(readOnly = true)
     public List<BoardResponseDto> getList() {
-        return boardRepository.findAll().stream()
-                .map(BoardResponseDto::new)
-                .collect(Collectors.toList());
+       return boardRepository.findAll().stream()
+               .map(BoardResponseDto::new)
+               .collect(Collectors.toList());
     }
 
-    public void update(Long boardId,BoardRequsetDto requsetDto) {
+    public Long update(Long boardId, BoardRequestDto requestDto) {
         Board board= isError(boardId);
-        board.update(requsetDto);
+        board.update(requestDto);
+        return board.getId();
     }
 
     public Board isError(Long boardId){
