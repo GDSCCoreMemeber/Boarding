@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+<div id="contents">
+    <form action="/update" method="post">
+        <input type="hidden" name="id" th:value="${data.id}" readonly="readonly"> <br>
+        제목 : <input type="text" name="title" th:value="${data.title}" readonly="readonly"> <br>
+        작성자 : <input type="text" name="name" th:value="${data.name}" readonly="readonly"> <br>
+        <textarea name="content" th:value="${data.content}"></textarea><br>
+
+        <input type="submit" value="등록">
+    </form>
+    <a href="/">홈</a>
+</div>
+
+</body>
+</html>
